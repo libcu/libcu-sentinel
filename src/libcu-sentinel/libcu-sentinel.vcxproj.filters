@@ -2,25 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <CudaCompile Include="program.cu" />
-    <CudaCompile Include="_sentinel_int.cu" />
+    <CudaCompile Include="sentinel.cu" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sentinel.cpp" />
-    <ClCompile Include="..\include\ext\pipeline.cpp">
-      <Filter>include\ext</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\sentinel.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\ext\mutex.h">
-      <Filter>include\ext</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\ext\pipeline.h">
-      <Filter>include\ext</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\_sentinel_int.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sentinel-hostmsg.h">
@@ -31,20 +19,10 @@
     <None Include="..\include\sentinel-client.cpp">
       <Filter>include</Filter>
     </None>
-    <None Include="ext\mutex.cu">
-      <Filter>ext</Filter>
-    </None>
-    <None Include="sentinel-gpu.cu" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
       <UniqueIdentifier>{1f86b303-64b1-4f0b-831c-e383f4090963}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\ext">
-      <UniqueIdentifier>{2b20ba72-08a3-4247-86f0-5394fc2f0548}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ext">
-      <UniqueIdentifier>{098f0a5a-6250-4068-ae25-a341d114d397}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

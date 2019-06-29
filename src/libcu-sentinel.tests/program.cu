@@ -1,4 +1,3 @@
-#include <_sentinel_int.h>
 #include <sentinel.h>
 #include <stdlib.h>
 #include <stdio.h>

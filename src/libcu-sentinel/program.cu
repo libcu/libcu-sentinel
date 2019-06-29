@@ -1,8 +1,6 @@
-#include <_sentinel_int.h>
 #include <sentinel.h>
 #include <assert.h>
 //
-#include <ext/pipeline.h>
 #define HostDir "C:\\T_\\"
 #define DeviceDir ":\\"
 

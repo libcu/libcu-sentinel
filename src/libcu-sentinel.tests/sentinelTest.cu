@@ -52,7 +52,7 @@ struct module_custom {
 		return end;
 	}
 	static __forceinline__ __device__ bool postfix(module_custom *t, intptr_t offset) {
-		char *ptr = (char *)t->ptr - offset;
+		//char *ptr = (char *)t->ptr - offset;
 		//if (t->rc > 0) memcpy(t->buf, ptr, t->rc);
 		return true;
 	}

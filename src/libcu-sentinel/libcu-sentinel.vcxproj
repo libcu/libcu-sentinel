@@ -24,26 +24,22 @@
     <ShortPlatform Condition="'$(Platform)'=='x64'">x64</ShortPlatform>
   </PropertyGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\ext\mutex.h" />
-    <ClInclude Include="..\include\ext\pipeline.h" />
     <ClInclude Include="..\include\sentinel-hostmsg.h" />
     <ClInclude Include="..\include\sentinel.h" />
-    <ClInclude Include="..\include\_sentinel_int.h" />
   </ItemGroup>
   <ItemGroup>
-    <CudaCompile Include="_sentinel_int.cu" />
     <None Include="..\include\sentinel-client.cpp" />
-    <None Include="..\include\ext\pipeline.cpp" />
     <ClCompile Include="sentinel.cpp" />
-    <None Include="ext\mutex.cu" />
     <CudaCompile Include="program.cu" />
-    <None Include="sentinel-gpu.cu" />
+    <CudaCompile Include="sentinel.cu">
+      <FileType>Document</FileType>
+    </CudaCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{ABDDD338-DC1C-475E-9903-0FC99E18726E}</ProjectGuid>
     <RootNamespace>libcu</RootNamespace>
     <ProjectName>libcu-sentinel</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,7 +70,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 10.0.props" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 10.1.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -132,7 +128,6 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)include;$(CudaToolkitIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MinimalRebuild>true</MinimalRebuild>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -140,7 +135,7 @@
       <AdditionalDependencies>cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(CudaToolkitBinDir)\nvcc.exe" -m=64 -arch=sm_$(CUARCH) -lib "$(IntDir)_sentinel_int.cu.obj" "$(IntDir)sentinel.obj" -o "$(OutDir)libcu-sentinel.$(CUARCH).lib"</Command>
+      <Command>"$(CudaToolkitBinDir)\nvcc.exe" -m=64 -arch=sm_$(CUARCH) -lib "$(IntDir)sentinel.cu.obj" "$(IntDir)sentinel.obj" -o "$(OutDir)libcu-sentinel.$(CUARCH).lib"</Command>
     </PostBuildEvent>
     <CudaCompile>
       <Include>$(SolutionDir)include;%(Include)</Include>
@@ -168,7 +163,7 @@
       <AdditionalDependencies>cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(CudaToolkitBinDir)\nvcc.exe" -m=32 -arch=sm_$(CUARCH) -lib "$(IntDir)_sentinel_int.cu.obj" "$(IntDir)sentinel.obj" -o "$(OutDir)libcu-sentinel.$(CUARCH).lib"</Command>
+      <Command>"$(CudaToolkitBinDir)\nvcc.exe" -m=32 -arch=sm_$(CUARCH) -lib "$(IntDir)sentinel.cu.obj" "$(IntDir)sentinel.obj" -o "$(OutDir)libcu-sentinel.$(CUARCH).lib"</Command>
     </PostBuildEvent>
     <CudaCompile>
       <Include>$(SolutionDir)include;%(Include)</Include>
@@ -195,7 +190,7 @@
       <AdditionalDependencies>cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(CudaToolkitBinDir)\nvcc.exe" -m=64 -arch=sm_$(CUARCH) -lib "$(IntDir)_sentinel_int.cu.obj" "$(IntDir)sentinel.obj" -o "$(OutDir)libcu-sentinel.$(CUARCH).lib"</Command>
+      <Command>"$(CudaToolkitBinDir)\nvcc.exe" -m=64 -arch=sm_$(CUARCH) -lib "$(IntDir)sentinel.cu.obj" "$(IntDir)sentinel.obj" -o "$(OutDir)libcu-sentinel.$(CUARCH).lib"</Command>
     </PostBuildEvent>
     <CudaCompile>
       <Include>$(SolutionDir)include;%(Include)</Include>
@@ -206,6 +201,6 @@
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 10.0.targets" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 10.1.targets" />
   </ImportGroup>
 </Project>
